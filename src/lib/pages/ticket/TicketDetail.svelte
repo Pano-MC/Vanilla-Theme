@@ -115,7 +115,7 @@
             class:disabled="{messageSendLoading || isSendButtonDisabled}"
             :disabled="{messageSendLoading || isSendButtonDisabled}">
             <i class="fas fa-paper-plane"></i>
-            <span class="d-lg-inline d-none">{$_("pages.ticket-detail.send-button")}</span>
+            <span class="d-xl-inline d-none ms-2">{$_("pages.ticket-detail.send-button")}</span>
           </button>
         </div>
       </div>
