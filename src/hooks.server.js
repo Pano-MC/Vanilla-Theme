@@ -12,15 +12,16 @@ export async function handle({
 }) {
   const locals = {};
 
-  const jwt = cookies.get(COOKIE_PREFIX + JWT_COOKIE_NAME);
-  const csrfToken = cookies.get(COOKIE_PREFIX + CSRF_TOKEN_COOKIE_NAME);
-
   // noinspection JSUnresolvedReference
   const apiUrlEnv = process.env.API_URL;
 
   if (apiUrlEnv) {
     updateApiUrl(apiUrlEnv);
+    locals.apiUrlEnv = apiUrlEnv;
   }
+
+  const jwt = cookies.get(COOKIE_PREFIX + JWT_COOKIE_NAME);
+  const csrfToken = cookies.get(COOKIE_PREFIX + CSRF_TOKEN_COOKIE_NAME);
 
   locals.user =
     jwt && csrfToken &&
