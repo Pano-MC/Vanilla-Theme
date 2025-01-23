@@ -1,4 +1,4 @@
-import { COOKIE_PREFIX, CSRF_TOKEN_COOKIE_NAME, JWT_COOKIE_NAME } from "$lib/variables.js";
+import { COOKIE_PREFIX, CSRF_TOKEN_COOKIE_NAME, JWT_COOKIE_NAME, updateApiUrl } from "$lib/variables.js";
 import { getCredentialsServerSide } from "$lib/services/auth.js";
 
 /** @type {import('@sveltejs/kit').Handle} */
@@ -14,6 +14,13 @@ export async function handle({
 
   const jwt = cookies.get(COOKIE_PREFIX + JWT_COOKIE_NAME);
   const csrfToken = cookies.get(COOKIE_PREFIX + CSRF_TOKEN_COOKIE_NAME);
+
+  // noinspection JSUnresolvedReference
+  const apiUrlEnv = process.env.API_URL;
+
+  if (apiUrlEnv) {
+    updateApiUrl(apiUrlEnv);
+  }
 
   locals.user =
     jwt && csrfToken &&
