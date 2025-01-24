@@ -61,6 +61,7 @@
 
   import { addListener } from "$lib/NotificationManager.js";
   import { initializePlugins, prepareSiteInfo } from "$lib/PluginManager.js";
+  import { updateApiUrl } from "$lib/variables.js";
 
   function sendVisitorVisitRequest({ event, csrfToken }) {
     ApiUtil.post({ path: "/api/visitorVisit", request: event, csrfToken });
