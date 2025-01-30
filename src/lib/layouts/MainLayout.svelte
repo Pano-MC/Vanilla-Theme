@@ -60,7 +60,7 @@
   import { init as initLanguage } from "$lib/language.util";
 
   import { addListener } from "$lib/NotificationManager.js";
-  import { initializePlugins, prepareSiteInfo } from "$lib/PluginManager.js";
+  import { initializePlugins } from "$lib/PluginManager.js";
   import { updateApiUrl } from "$lib/variables.js";
 
   function sendVisitorVisitRequest({ event, csrfToken }) {
@@ -98,8 +98,6 @@
       request: event,
       csrfToken
     });
-
-    siteInfo = await prepareSiteInfo(siteInfo);
 
     return { user, csrfToken, siteInfo, apiUrlEnv };
   }
