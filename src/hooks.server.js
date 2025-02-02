@@ -1,4 +1,4 @@
-import { COOKIE_PREFIX, CSRF_TOKEN_COOKIE_NAME, JWT_COOKIE_NAME, updateApiUrl } from "$lib/variables.js";
+import { API_URL, COOKIE_PREFIX, CSRF_TOKEN_COOKIE_NAME, JWT_COOKIE_NAME, updateApiUrl } from "$lib/variables.js";
 import { getCredentialsServerSide } from "$lib/services/auth.js";
 
 /** @type {import('@sveltejs/kit').Handle} */
@@ -34,4 +34,13 @@ export async function handle({
   event.locals = locals;
 
   return resolve(event);
+}
+
+/** @type {import("@sveltejs/kit").HandleFetch} */
+export async function handleFetch({ event, request, fetch }) {
+  if (request.url.startsWith(API_URL)) {
+    request.headers.set("cookie", event.request.headers.get("cookie"));
+  }
+
+  return fetch(request);
 }
