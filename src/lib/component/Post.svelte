@@ -2,10 +2,10 @@
   {#if post.thumbnailUrl}
     <a href="/blog/post/{post.url}">
       <img
-        src="{post.thumbnailUrl}"
-        class="img-thumbnail"
-        alt="{post.title}"
-        title="{post.title}" />
+        src={post.thumbnailUrl}
+        class="card-img-top rounded-top"
+        alt={post.title}
+        title={post.title} />
     </a>
   {/if}
   <div class="card-body">
@@ -22,9 +22,9 @@
       <div class="col-auto">
         {#if post.category.title !== "-"}
           <a
-            class="badge rounded-pill bg-light text-black"
+            class="badge bg-secondary text-dark rounded-pill"
             href="/blog/category/{post.category.url}"
-            use:tooltip="{['Filtrele', { placement: 'bottom' }]}">
+            use:tooltip={["Filtrele", { placement: "bottom" }]}>
             {post.category.title}
           </a>
         {/if}
@@ -42,7 +42,7 @@
         <li class="list-inline">
           <div
             class="list-inline-item px-1"
-            use:tooltip="{[$_('components.post.view'), { placement: 'bottom' }]}">
+            use:tooltip={[$_("components.post.view"), { placement: "bottom" }]}>
             <i class="fas fa-eye me-2"></i>
             {post.views}
           </div>
@@ -50,31 +50,31 @@
       </ul>
 
       <div>
-        <Date time="{post.date}" />
+        <Date time={post.date} />
         <a href="/player/{post.writer.username}">
           <img
             src="https://minotar.net/avatar/{post.writer.username}"
-            alt="{post.writer.username}"
+            alt={post.writer.username}
             width="32"
             height="32"
-            use:tooltip="{[post.writer.username, { placement: 'bottom' }]}"
+            use:tooltip={[post.writer.username, { placement: "bottom" }]}
             class="rounded-circle ms-2" />
         </a>
       </div>
     {:else}
-      <a class="btn btn-link ps-0" href="/blog/post/{post.url}">
+      <a class="btn btn-link link-info ps-0" href="/blog/post/{post.url}">
         {$_("components.post.read-more")}
       </a>
 
       <div>
-        <Date time="{post.date}" />
+        <Date time={post.date} />
         <a href="/player/{post.writer.username}">
           <img
             src="https://minotar.net/avatar/{post.writer.username}"
-            alt="{post.writer.username}"
+            alt={post.writer.username}
             width="32"
             height="32"
-            use:tooltip="{[post.writer.username, { placement: 'bottom' }]}"
+            use:tooltip={[post.writer.username, { placement: "bottom" }]}
             class="rounded-circle ms-2" />
         </a>
       </div>

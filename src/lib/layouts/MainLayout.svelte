@@ -3,18 +3,6 @@
 </svelte:head>
 
 <App>
-  <!-- Announcement Alert -->
-  <div
-    class="alert alert-warning text-center alert-dismissible fade show rounded-0 mb-0"
-    role="alert">
-    <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="alert"
-      aria-label="Close"></button>
-    Alert 2
-  </div>
-  <!--Announcement Alert End-->
   <Header />
 
   <!-- Gives a gray background color to the container area -->
@@ -22,9 +10,7 @@
   <!-- Announcement Alert -->
   <div class="container">
     <div class="mb-3">
-      <div
-        class="alert alert-warning alert-dismissible fade show"
-        role="alert">
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <button
           type="button"
           class="btn-close"
@@ -90,13 +76,13 @@
    */
   export async function loadServer(event) {
     const {
-      locals: { user, csrfToken, apiUrlEnv }
+      locals: { user, csrfToken, apiUrlEnv },
     } = event;
 
     let siteInfo = await ApiUtil.get({
       path: "/api/siteInfo",
       request: event,
-      csrfToken
+      csrfToken,
     });
 
     return { user, csrfToken, siteInfo, apiUrlEnv };
@@ -119,7 +105,7 @@
     await initializePlugins(siteInfo);
 
     const output = {
-      session: { user, csrfToken, siteInfo }
+      session: { user, csrfToken, siteInfo },
     };
 
     await initLanguage(siteInfo.locale);

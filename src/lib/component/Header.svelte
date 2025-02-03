@@ -1,9 +1,9 @@
 <!-- Header -->
-<div class="bg-warning border-bottom border-5 border-white">
+<div class="bg-white border-bottom border-5 border-white">
   <div class="container">
     <img
-      title="{$session.siteInfo.websiteName}"
-      alt="{$_('components.header.alt')}"
+      title={$session.siteInfo.websiteName}
+      alt={$_("components.header.alt")}
       class="img-fluid d-block m-auto p-3"
       src="/api/websiteLogo" />
   </div>

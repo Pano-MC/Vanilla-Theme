@@ -4,13 +4,13 @@
     <button
       class="btn btn-lg btn-secondary w-100"
       type="button"
-      on:click="{onCopyCommandTextClick}"
-      use:tooltip="{[
+      on:click={onCopyCommandTextClick}
+      use:tooltip={[
         isCommandTextCopied
-          ? $_('sidebars.home.copied')
-          : $_('sidebars.home.copy'),
-        { placement: 'bottom', hideOnClick: false },
-      ]}">
+          ? $_("sidebars.home.copied")
+          : $_("sidebars.home.copy"),
+        { placement: "bottom", hideOnClick: false },
+      ]}>
       {$data.ipAddress}
     </button>
     <!-- Play Button End -->
@@ -57,11 +57,12 @@
             <div class="col-3">
               <a href="/player/{player}">
                 <img
-                  alt="{player}"
+                  alt={player}
                   class="rounded"
                   src="https://minotar.net/avatar/{player}"
-                  use:tooltip="{[player, { placement: 'bottom' }]}"
-                  width="24" />
+                  use:tooltip={[player, { placement: "bottom" }]}
+                  width="48"
+                  height="48" />
               </a>
             </div>
           {/each}
