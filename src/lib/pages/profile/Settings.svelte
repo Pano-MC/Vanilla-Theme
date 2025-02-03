@@ -7,13 +7,14 @@
         {$_("pages.settings.inputs.change-password.title")}
       </label>
       <div class="col col-form-label">
-        <a
-          href="javascript:void(0);"
+        <button
+          class="btn btn-outline-primary"
+          disabled="{resetPasswordLoading || !$session.siteInfo.emailEnabled}"
           on:click="{sendResetPasswordLink}"
           aria-describedby="resetPassword validationResetPassword"
-          class:disabled="{resetPasswordLoading}"
           class:is-invalid="{resetPasswordError}"
-          >{$_("pages.settings.inputs.change-password.description")}</a>
+          type="button"
+        >{$_("pages.settings.inputs.change-password.description")}</button>
 
         <div id="validationResetPassword" class="invalid-feedback">
           {resetPasswordError}
@@ -46,11 +47,13 @@
                     })}
                   </p>
                 {:else}
-                  <a
-                    href="javascript:void(0);"
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary"
                     aria-describedby="userEmail"
                     on:click="{startChangingEmail}"
-                    >{$_("pages.settings.inputs.change-email.description")}</a>
+                    disabled="{!$session.siteInfo.emailEnabled}"
+                  >{$_("pages.settings.inputs.change-email.description")}</button>
                 {/if}
               </div>
             {:else if changingEmail2ndStep}
@@ -115,9 +118,7 @@
 </div>
 
 <script context="module">
-  import ProfileSidebar, {
-    load as loadSidebar,
-  } from "$lib/component/sidebars/ProfileSidebar.svelte";
+  import ProfileSidebar, { load as loadSidebar } from "$lib/component/sidebars/ProfileSidebar.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -133,6 +134,7 @@
 </script>
 
 <script>
+  import { getContext } from "svelte";
   import { _ } from "svelte-i18n";
 
   import { sendChangeEmail, sendResetPassword } from "$lib/services/profile.js";
@@ -151,6 +153,8 @@
   let changingEmailError;
   let changingEmailLoading;
   let changingEmailSuccess;
+
+  const session = getContext("session");
 
   async function sendResetPasswordLink() {
     resetPasswordError = null;
