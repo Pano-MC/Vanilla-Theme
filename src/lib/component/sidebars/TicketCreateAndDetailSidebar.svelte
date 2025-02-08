@@ -33,7 +33,7 @@
   export const load = async (event, ticket) => {
     data.set(
       await ApiUtil.get({
-        path: "/api/sidebar/support",
+        path: "/api/sidebars/support",
         request: event,
       }),
     );

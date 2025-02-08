@@ -82,7 +82,7 @@
   export const load = async (event) => {
     data.set(
       await ApiUtil.get({
-        path: "/api/sidebar/home",
+        path: "/api/sidebars/home",
         request: event,
       }),
     );

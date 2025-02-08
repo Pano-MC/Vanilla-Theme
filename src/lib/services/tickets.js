@@ -96,7 +96,7 @@ export const sendTicketMessage = async ({
                                           csrfToken
 }) => {
   return ApiUtil.post({
-    path: `/api/tickets/${ticketId}/message`,
+    path: `/api/tickets/${ticketId}/messages`,
     body: {
       message,
     },
