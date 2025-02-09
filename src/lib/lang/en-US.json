@@ -1,4 +1,6 @@
 {
+  "name": "English (US)",
+  "date-fns-code": "en-US",
   "nav-links": {
     "support": "Support",
     "panel": "Panel",

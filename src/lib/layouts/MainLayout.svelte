@@ -108,7 +108,7 @@
       session: { user, csrfToken, siteInfo },
     };
 
-    await initLanguage(siteInfo.locale);
+    await initLanguage(siteInfo.locale, event);
 
     if (browser) {
       initNotificationListeners();
