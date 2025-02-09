@@ -4,7 +4,11 @@ import path from "path";
 /** @type {import("@sveltejs/kit").RequestHandler} */
 export async function GET({ params }) {
   const { language } = params;
-  const filePath = path.resolve(`src/lib/lang/${language}.json`);
+  let filePath = path.resolve(`lang/${language}.json`);
+
+  if (!fs.existsSync(filePath)) {
+    filePath = path.resolve(path.dirname(process.argv[1]) + `/lang/${language}.json`);
+  }
 
   if (fs.existsSync(filePath)) {
     const fileContent = fs.readFileSync(filePath, "utf-8");

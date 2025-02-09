@@ -3,8 +3,15 @@ import path from "path";
 
 /** @type {import("@sveltejs/kit").RequestHandler} */
 export async function GET() {
-  const languagesDir = path.resolve("src/lib/lang");
-  const files = fs.readdirSync(languagesDir);
+  let languagesDir = path.resolve("lang");
+  let files = [];
+
+  try {
+    files = fs.readdirSync(languagesDir);
+  } catch (e) {
+    languagesDir = path.dirname(process.argv[1]) + "/lang";
+    files = fs.readdirSync(languagesDir);
+  }
   const languages = {};
 
   files.forEach(file => {
