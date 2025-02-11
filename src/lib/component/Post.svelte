@@ -31,9 +31,9 @@
       </div>
     </div>
 
-    <p class="card-text text-break">
+    <div class="card-text text-break">
       {@html post.text}
-    </p>
+    </div>
   </div>
   <div
     class="card-footer bg-white d-flex align-items-center justify-content-between">
