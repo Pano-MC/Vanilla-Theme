@@ -7,6 +7,8 @@ import { redirect } from "@sveltejs/kit";
 export const notificationsCount = writable(0);
 export const quickNotifications = writable([]);
 
+export const initialized = writable(false);
+
 export async function logout() {
   sendLogout().then(async () => {
     await invalidateAll();
