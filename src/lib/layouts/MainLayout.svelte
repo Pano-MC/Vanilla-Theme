@@ -114,16 +114,12 @@
       initNotificationListeners();
     }
 
-    if (browser) {
-      sendVisitorVisitRequest({ event, csrfToken });
-    }
-
     return output;
   }
 </script>
 
 <script>
-  import { onDestroy, setContext } from "svelte";
+  import { onDestroy, onMount, setContext } from "svelte";
 
   import { page } from "$app/stores";
 
@@ -136,6 +132,7 @@
   import LoginModal from "$lib/component/modals/LoginModal.svelte";
   import RegisterModal from "$lib/component/modals/RegisterModal.svelte";
   import NotificationContainer from "$lib/component/NotificationContainer.svelte";
+  import { initialized } from "$lib/Store.js";
 
   export let data;
 
@@ -154,4 +151,10 @@
   setContext("sidebarProps", sidebarProps);
 
   onDestroy(pageUnsubscribe);
+
+  onMount(() => {
+    initialized.set(true);
+
+    sendVisitorVisitRequest({});
+  });
 </script>
